@@ -1,0 +1,22 @@
+
+<h1>All Crush Offices</h1>
+
+<ol>
+
+    <% @offices.each do |office| %>
+    <li>
+      <p>
+        <u><%= link_to office.name, office_path(office) %></u><br>
+        <%= office.street %><br>
+        <%== "#{office.suite} <br />"  if office.suite == " " %>
+        <%= office.city_state_zip %>
+
+        <br>
+        <%= office.phone %>
+        <br>
+
+        </p>
+      </li>
+    <% end %>
+
+</ol>

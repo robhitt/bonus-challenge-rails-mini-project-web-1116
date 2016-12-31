@@ -1,0 +1,19 @@
+<h1><%= @band.name %></h1>
+  <h2>Edit Band Information</h2>
+    <%= form_for(@band) do |f| %>
+
+      <%= f.text_field :name %>
+      <%= f.label :name %><br>
+
+      <%= f.text_field :website %>
+      <%= f.label :website %><br>
+
+      <%= f.text_field :photo_url %>
+      <%= f.label :photo_url %><br>
+
+      <%= f.text_field :logo_url %>
+      <%= f.label :logo_url %><br>
+
+      <%= f.submit %>
+
+    <% end %>

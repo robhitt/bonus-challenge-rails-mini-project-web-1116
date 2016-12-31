@@ -1,0 +1,23 @@
+
+<center><img src="<%= @band.logo_url %>" width="300"></center>
+<ul>
+  <li>
+    <strong>Band: <%= @band.name%></strong><br>
+  </li>
+
+  <li>
+    <strong>Website:</strong> <a href="<%= @band.website%>"><%= @band.website%></a>
+  </li>
+
+  <li>
+      <img src="<%= @band.photo_url%>" width="300">
+  </li>
+
+</ul>
+
+
+
+
+
+<p><%= button_to "Edit Band Info", edit_band_path(@band), method: :get %></p>
+<p><%= button_to "Delete Band", @band, method: :delete %></p>

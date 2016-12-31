@@ -1,0 +1,14 @@
+
+<h1>All Crush Bands</h1>
+
+<ol>
+
+    <% @bands.each do |band| %>
+    <li>
+      <p>
+        <u><%= link_to band.name, band_path(band) %></u><br>
+      </p>
+      </li>
+    <% end %>
+
+</ol>

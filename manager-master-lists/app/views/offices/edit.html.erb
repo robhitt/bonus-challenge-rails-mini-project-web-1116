@@ -1,0 +1,35 @@
+<h1><%= @office.name %> Crush Office</h1>
+  <h2>Edit Space Information</h2>
+    <%= form_for(@office) do |f| %>
+
+      <%= f.text_field :name %>
+      <%= f.label :name %><br>
+
+      <%= f.text_field :street %>
+      <%= f.label :street %><br>
+
+      <%= f.text_field :suite %>
+      <%= f.label :suite %><br>
+
+      <%= f.text_field :city %>
+      <%= f.label :city %><br>
+
+      <%= f.text_field :state %>
+      <%= f.label :state %><br>
+
+      <%= f.number_field :zip %>
+      <%= f.label :zip %><br>
+
+      <%= f.email_field :fax %>
+      <%= f.label :fax %><br>
+
+      <%= f.phone_field :phone %>
+      <%= f.label :phone %><br>
+
+
+      <%= f.submit %>
+
+
+
+
+      <% end %>

@@ -1,0 +1,52 @@
+<h1>Hi <%= @manager.full_name %>, Welcome Back!</h1>
+<ul>
+
+
+  <!-- MAKE LINK FOR FUTURE
+  https://www.google.com/maps/place/214+N+11th+St,+Brooklyn,+NY+11211 -->
+  <li>
+    <strong>Address:</strong><br>
+
+    <a href="<%= @manager.maps_url %>" target="_new">
+      <%= @manager.street %><br>
+      <%== "#{@manager.apt} <br />"  if @manager.apt == " " %>
+      <%= @manager.city_state_zip%>
+    </a>
+
+  </li>
+
+  <p></p>
+
+  <li>
+    <strong>Phone:</strong><br>
+      <%= @manager.phone%>
+  </li>
+
+  <p></p>
+
+  <li>
+    <strong>Email:</strong><br>
+      <%= mail_to @manager.email, name = @manager.email %><br>
+  </li>
+
+  <p></p>
+
+  <li>
+    <strong>Primary Office:</strong><br>
+    <%=  @manager.office_id == 1 ? "NY" : "LA"%>
+  </li>
+
+  <p></p>
+  <li>
+    <strong>Artists</strong><br>
+    <ol>
+      <% @bands.each do |band| %>
+        <li><%= link_to band.name, band_path(band) %></li>
+      <% end %>
+    </ol>
+  </li>
+</ul>
+
+<p><%= button_to "Edit Your Info", edit_manager_path(@manager), method: :get %></p>
+<p><%= button_to "Delete Account", @manager, method: :delete %></p>
+<p><%= button_to "Office Employees", office_employees_path, method: :get %></p>
