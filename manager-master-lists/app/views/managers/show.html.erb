@@ -1,3 +1,4 @@
+
 <h1>Hi <%= @manager.full_name %>, Welcome Back!</h1>
 <ul>
 
@@ -33,7 +34,7 @@
 
   <li>
     <strong>Primary Office:</strong><br>
-    <%=  @manager.office_id == 1 ? "NY" : "LA"%>
+    <%=  @manager.office.name %>
   </li>
 
   <p></p>

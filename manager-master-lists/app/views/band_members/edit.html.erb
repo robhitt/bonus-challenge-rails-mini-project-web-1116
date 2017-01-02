@@ -1,6 +1,6 @@
-<h1>You're The New Employee!</h1>
-  <h2>Fill Out Your Information</h2>
-    <%= form_for(@manager) do |f| %>
+<h1>Hi <%= @band_member.full_name %>, Welcome back!</h1>
+  <h2>Edit Your Information</h2>
+    <%= form_for(@band_member) do |f| %>
 
       <%= f.text_field :first_name %>
       <%= f.label :first_name %><br>
@@ -29,18 +29,22 @@
       <%= f.phone_field :phone %>
       <%= f.label :phone %><br>
 
-      <%= f.text_field :ext %>
-      <%= f.label :ext %><br>
 
-      <legend>Primary Office</legend>
-      <% @offices.each do |office| %>
-        <%= f.radio_button :office_id , office.id, :checked => (office.id == 4) %> <%= f.label :office_id, office.name %>
+      <%= f.date_field :birthday %>
+      <%= f.label :birthday %><br>
+
+      <%= f.text_field :instrument %>
+      <%= f.label :instrument %><br>
+
+      <%= f.text_field :notes %>
+      <%= f.label :notes %><br>
+
+      <legend>Bands</legend>
+      <% @bands.each do |band| %>
+        <%= f.radio_button :band_id , band.id %> <%= f.label :band_id, band.name %>
       <% end %>
+
       <br>
 
       <%= f.submit %>
-
-
-
-
-      <% end %>
+    <% end %>

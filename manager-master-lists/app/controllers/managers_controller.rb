@@ -7,10 +7,13 @@ class ManagersController < ApplicationController
 
   def new
     @manager = Manager.new
+    @offices = Office.all
   end
 
   def create
     @manager = Manager.create(manager_params)
+
+
     redirect_to managers_path
   end
 
@@ -19,6 +22,8 @@ class ManagersController < ApplicationController
   end
 
   def edit
+    @offices = Office.all
+    
   end
 
   def update

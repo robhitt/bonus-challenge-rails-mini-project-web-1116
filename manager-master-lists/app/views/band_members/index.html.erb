@@ -1,0 +1,26 @@
+<h1>All Band Members</h1>
+<ol>
+    <% @band_members.each do |band_member| %>
+    <li>
+      <p><u><%= link_to band_member.full_name, band_member_path(band_member) %></u><br>
+          <b>
+            Band: <%= link_to band_member.band.name, band_path(band_member.band) %>
+            <br>
+            Instrument: <%= band_member.instrument %>
+          </b>
+
+          <br>
+
+          <%= band_member.street %><br>
+          <%== "#{band_member.apt} <br />"  if band_member.apt == " " %>
+          <%= band_member.city_state_zip %>
+
+          <br>
+
+          <%= mail_to band_member.email, name = band_member.email %>
+        </p>
+      </li>
+
+    <% end %>
+
+</ol>

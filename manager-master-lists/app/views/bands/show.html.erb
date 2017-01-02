@@ -1,23 +1,60 @@
 
+
+
 <center><img src="<%= @band.logo_url %>" width="300"></center>
-<ul>
+<ul style="list-style: none;">
   <li>
-    <strong>Band: <%= @band.name%></strong><br>
+    <strong>Band: <%= @band.name%></strong>
   </li>
+
+  <br>
+
+<% if @band.spotify_info != nil %>
+  <li>
+    <strong>Spotify Info: </strong>
+    <ul>
+        <li><%= link_to "Spotify Profile Page", @band.spotify_url %></li>
+        <li>
+            <strong><%= @band.followers %></strong> followers as of <%= Band.display_date %>
+        </li>
+    </ul>
+
+  </li>
+<% end %>
+
+
+  <p></p>
 
   <li>
     <strong>Website:</strong> <a href="<%= @band.website%>"><%= @band.website%></a>
   </li>
 
+  <p></p>
+
+<% if @band.spotify_info != nil %>
+
   <li>
-      <img src="<%= @band.photo_url%>" width="300">
+      <img src="<%= @band.band_image %>" width="300">
   </li>
+<% end %>
 
+  <p></p>
+
+  <li>
+    <b>BAND MEMBERS</b>:
+    <ul>
+        <% @band.band_members.each do |member| %>
+        <li>
+            <%= link_to member.full_name, band_member_path(member) %>
+        </li>
+        <% end %>
+    </ul>
+  </li>
 </ul>
-
-
-
-
 
 <p><%= button_to "Edit Band Info", edit_band_path(@band), method: :get %></p>
 <p><%= button_to "Delete Band", @band, method: :delete %></p>
+
+<!-- followers
+
+spotify_url -->

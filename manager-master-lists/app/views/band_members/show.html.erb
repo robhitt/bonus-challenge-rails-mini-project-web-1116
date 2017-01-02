@@ -1,0 +1,52 @@
+
+<center>
+  <h1>Hi <u><%= @band_member.full_name %></u>!
+    <br>
+    You've been slaying it on the <b><u><%= @band_member.instrument %></u> in <u>
+
+      <%= link_to @band_member.band.name, band_path(@band_member.band) %></u></b>.
+
+    <br>
+    Welcome Back!
+  </h1>
+</center>
+<ul>
+  <!-- MAKE LINK FOR FUTURE
+  https://www.google.com/maps/place/214+N+11th+St,+Brooklyn,+NY+11211 -->
+  <li>
+    <strong>Address:</strong><br>
+
+    <a href="<%= @band_member.maps_url %>" target="_new">
+      <%= @band_member.street %><br>
+      <%== "#{@band_member.apt} <br />"  if @band_member.apt == " " %>
+      <%= @band_member.city_state_zip%>
+    </a>
+
+  </li>
+
+  <p></p>
+
+  <li>
+    <strong>Phone:</strong><br>
+      <%= @band_member.phone%>
+  </li>
+
+  <p></p>
+
+  <li>
+    <strong>Email:</strong><br>
+      <%= mail_to @band_member.email, name = @band_member.email %><br>
+  </li>
+
+  <p></p>
+  <b>Your Managers Are:</b>
+    <% @band_member.band.managers.each do |manager| %>
+      <li>
+        <%= link_to manager.full_name, manager_path(manager) %> |
+        <%= manager.phone %> |
+        <%= mail_to manager.email, name = manager.email %>
+      </li>
+    <% end %>
+</ul>
+
+<p><%= button_to "Edit Your Info", edit_band_member_path(@band_member), method: :get, class: "btn btn-primary" %><%= button_to "Delete Account", @band_member, method: :delete, class: "btn btn-primary" %><%= button_to "Other Band Mates", band_members_path, method: :get, class: "btn btn-primary" %></p>

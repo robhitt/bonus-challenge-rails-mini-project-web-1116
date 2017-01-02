@@ -1,16 +1,15 @@
 <ol>
 
     <% @managers.each do |manager| %>
-    <li>
-      <p><u><%= link_to manager.full_name, manager_path(manager) %></u><br>
-          <%= manager.street %><br>
-          <%== "#{manager.apt} <br />"  if manager.apt == " " %>
-          <%= manager.city_state_zip %>
-          <br>
-          <%= mail_to manager.email, name = manager.email %>
-        </p>
+      <li>
+        <p><u><%= link_to manager.full_name, manager_path(manager) %></u><br>
+            <%= manager.street %><br>
+            <%== "#{manager.apt} <br />"  if manager.apt == " " %>
+            <%= manager.city_state_zip %>
+            <br>
+            <%= mail_to manager.email, name = manager.email %>
+          </p>
       </li>
-
     <% end %>
 
 </ol>

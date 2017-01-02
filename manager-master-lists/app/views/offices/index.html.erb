@@ -7,14 +7,18 @@
     <li>
       <p>
         <u><%= link_to office.name, office_path(office) %></u><br>
-        <%= office.street %><br>
-        <%== "#{office.suite} <br />"  if office.suite == " " %>
-        <%= office.city_state_zip %>
 
-        <br>
-        <%= office.phone %>
-        <br>
+          <% if office.street != nil %>
+          
+            <%= office.street %><br>
+            <%== "#{office.suite} <br />"  if office.suite == " " %>
+            <%= office.city_state_zip %>
 
+            <br>
+            <%= office.phone %>
+            <br>
+
+          <% end %>
         </p>
       </li>
     <% end %>
