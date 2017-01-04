@@ -11,10 +11,13 @@ class BandMembersController < ApplicationController
   end
 
   def create
+    @band_member = BandMember.new(band_member_params)
 
-    @band_member = BandMember.create(band_member_params)
-
-    redirect_to band_members_path
+    if @band_member.save
+      redirect_to band_members_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -27,8 +30,11 @@ class BandMembersController < ApplicationController
   end
 
   def update
-    @band_member.update(band_member_params)
-    redirect_to band_member_path(@band_member)
+    if @band_member.update(band_member_params)
+      redirect_to band_member_path(@band_member)
+    else
+      render :edit
+    end
   end
 
   def destroy

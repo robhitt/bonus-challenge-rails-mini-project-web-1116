@@ -11,10 +11,12 @@ class ManagersController < ApplicationController
   end
 
   def create
-    @manager = Manager.create(manager_params)
-
-
-    redirect_to managers_path
+    @manager = Manager.new(manager_params)
+    if @manager.save
+      redirect_to managers_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -23,12 +25,15 @@ class ManagersController < ApplicationController
 
   def edit
     @offices = Office.all
-    
+
   end
 
   def update
-    @manager.update(manager_params)
-    redirect_to manager_path(@manager)
+    if @manager.update(manager_params)
+      redirect_to manager_path(@manager)
+    else
+      render :edit
+    end
   end
 
   def destroy

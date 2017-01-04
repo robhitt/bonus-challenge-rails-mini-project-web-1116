@@ -10,8 +10,12 @@ class BandsController < ApplicationController
   end
 
   def create
-    @band = Band.create(band_params)
-    redirect_to bands_path
+    @band = Band.new(band_params)
+    if @band.save
+      redirect_to bands_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -22,8 +26,11 @@ class BandsController < ApplicationController
   end
 
   def update
-    @band.update(band_params)
-    redirect_to band_path(@band)
+    if @band.update(band_params)
+      redirect_to band_path(@band)
+    else
+      render :edit
+    end
   end
 
   def destroy

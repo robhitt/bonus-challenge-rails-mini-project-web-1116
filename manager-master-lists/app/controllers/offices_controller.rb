@@ -16,8 +16,12 @@ class OfficesController < ApplicationController
 
 
   def create
-    @office = Office.create(office_params)
-    redirect_to offices_path
+    @office = Office.new(office_params)
+    if office.save
+      redirect_to offices_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -28,8 +32,11 @@ class OfficesController < ApplicationController
   end
 
   def update
-    @office.update(office_params)
-    redirect_to office_path(@office)
+    if @office.update(office_params)
+      redirect_to office_path(@office)
+    else
+      render :edit
+    end
   end
 
   def destroy
