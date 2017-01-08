@@ -8,14 +8,18 @@ class ManagersController < ApplicationController
   def new
     @manager = Manager.new
     @offices = Office.all
+    @bands = Band.all
   end
 
   def create
     @manager = Manager.new(manager_params)
+    session[:manager_id] = @manager.id
+
     if @manager.save
       redirect_to managers_path
     else
-      render :new
+      flash[:message] = "Username already taken"
+      redirect_to new_manager_path
     end
   end
 
@@ -25,6 +29,7 @@ class ManagersController < ApplicationController
 
   def edit
     @offices = Office.all
+    @bands = Band.all
 
   end
 
@@ -32,7 +37,8 @@ class ManagersController < ApplicationController
     if @manager.update(manager_params)
       redirect_to manager_path(@manager)
     else
-      render :edit
+      flash[:message] = "Username already taken"
+      redirect_to edit_manager_path(@manager)
     end
   end
 
@@ -46,7 +52,7 @@ class ManagersController < ApplicationController
   private
 
   def manager_params
-    params.require(:manager).permit(:first_name, :last_name, :street, :apt, :city, :state, :zip, :office_id, :ext, :email, :phone)
+    params.require(:manager).permit(:first_name, :last_name, :street, :apt, :city, :state, :zip, :office_id, :ext, :email, :phone, :username, :password)
   end
 
   def mgr

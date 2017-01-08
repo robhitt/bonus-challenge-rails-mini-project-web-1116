@@ -1,5 +1,6 @@
 class BandsController < ApplicationController
   before_action :find_id, only: [:edit, :update, :destroy]
+  before_action :authenticate_manager, only: [:new, :create, :edit, :update]
 
   def index
     @bands = Band.all
