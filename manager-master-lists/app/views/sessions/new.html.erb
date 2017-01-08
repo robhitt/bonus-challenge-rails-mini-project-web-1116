@@ -1,0 +1,17 @@
+<%= form_tag '/signin' do %>
+<%= flash[:notice] %>
+
+<div class="form-group">
+  <%= label_tag :username, nil, class: "form-label" %>
+  <%= text_field_tag 'manager[username]', nil, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= label_tag :password, nil,  class: "form-label" %>
+  <%= password_field_tag 'manager[password]', nil, class: "form-control" %>
+</div>
+
+  <%= submit_tag "Sign In"%>
+
+
+<% end %>

@@ -1,4 +1,6 @@
 
+<% if session[:manager_id] %>
+
 <h1>Hi <%= @manager.full_name %>, Welcome Back!</h1>
 <ul>
 
@@ -51,3 +53,5 @@
 <p><%= button_to "Edit Your Info", edit_manager_path(@manager), method: :get %></p>
 <p><%= button_to "Delete Account", @manager, method: :delete %></p>
 <p><%= button_to "Office Employees", office_employees_path, method: :get %></p>
+
+<% end %>

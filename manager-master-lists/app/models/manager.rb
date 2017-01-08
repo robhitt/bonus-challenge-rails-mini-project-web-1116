@@ -3,6 +3,8 @@ class Manager < ApplicationRecord
   has_many :band_managers
   has_many :bands, through: :band_managers
   has_many :band_members, through: :bands
+  validates :username, uniqueness: true
+  has_secure_password
 
   include Addressable
 
